@@ -6,12 +6,14 @@
 			"React": true
 		},
 		"ecmaFeatures": {
+			"modules": true,
 			"jsx": true,
 			"spread": true
 		},
 		"plugins": ["react", "babel"],
 		"extends": ["eslint:recommended", "plugin:react/recommended", "airbnb"]
 	},
+	"parser": "babel-eslint",
 	"rules": {
 		"strict": 0,
 		"semi": 2

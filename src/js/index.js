@@ -1,3 +1,4 @@
+'use strict';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { bindActionCreators } from 'redux';
@@ -8,7 +9,7 @@ import configureStore from './store/configure-store';
 import { renderDevTools } from './utils/dev-tools';
 import * as routeActions from './actions/route-actions';
 
-import App from './containers/app';
+import App from './components/App';
 
 const store = configureStore();
 
