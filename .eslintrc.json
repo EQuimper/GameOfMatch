@@ -1,0 +1,24 @@
+{
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "module",
+		"globals": {
+			"React": true
+		},
+		"ecmaFeatures": {
+			"jsx": true,
+			"spread": true
+		},
+		"plugins": ["react", "babel"],
+		"extends": ["eslint:recommended", "plugin:react/recommended", "airbnb"]
+	},
+	"rules": {
+		"strict": 0,
+		"semi": 2
+	},
+	"env": {
+		"es6": true,
+		"node": true,
+		"browser": true
+	}
+}
