@@ -1,4 +1,5 @@
 import React from 'react';
+import RaisedButton from 'material-ui/lib/raised-button';
 import Radium from 'radium';
 
 class Login extends React.Component {
@@ -8,8 +9,8 @@ class Login extends React.Component {
 	render() {
 		return (
 			<div>
-				<hi>Im the login</hi>
-				<input onClick={this.showLock.bind(this)} id="btn-login" class="btn-login" type="submit"/>
+				<h1>Login Page</h1>
+				<RaisedButton label="Login" onClick={this.showLock.bind(this)} id="btn-login" class="btn-login" type="submit"/>
 			</div>
 		);
 	}
