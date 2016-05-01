@@ -6,9 +6,11 @@ import { bindActionCreators } from 'redux';
 import Login from './Login';
 import LoggedIn from './LoggedIn';
 import * as UserAction from '../actions/UserActions';
+import * as SwipeAction from '../actions/SwipeActions';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Colors from 'material-ui/lib/styles/colors';
 
+console.log(SwipeAction);
 console.log(UserAction);
 
 import NavBar from './NavBar';
