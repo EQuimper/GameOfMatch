@@ -19,6 +19,7 @@
     "babel-preset-stage-0": "6.3.13",
     "express": "^4.13.4",
     "express-jwt": "^3.3.0",
+    "flexboxgrid": "^6.3.0",
     "history": "^2.1.1",
     "json-loader": "^0.5.4",
     "jsxstyle": "0.0.18",

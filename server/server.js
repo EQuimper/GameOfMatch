@@ -20,7 +20,7 @@ const app = express();
 app.use('/assets', express.static('dist'));
 
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, './index.html'));
+  res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 // Get Summoner Id and Profile Icon

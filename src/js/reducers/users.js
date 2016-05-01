@@ -1,4 +1,4 @@
-import { ADD_USER } from '../actions/add-user';
+import { ADD_USER } from '../constants/action-types';
 
 function UsersReducer (state = [], action) {
 	switch (action.type) {

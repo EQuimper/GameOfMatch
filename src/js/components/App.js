@@ -5,10 +5,19 @@ import Radium from 'radium';
 import { bindActionCreators } from 'redux';
 import Login from './Login';
 import LoggedIn from './LoggedIn';
-import * as UserAction from '../actions/add-user';
+import * as UserAction from '../actions/user-actions';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import Colors from 'material-ui/lib/styles/colors';
+
+import NavBar from './NavBar';
+import CreateProfile from './CreateProfile';
+
+injectTapEventPlugin();
+
 
 const Fonts = ({ children }) =>
-	<Block fontFamily='Roboto, sans-serif'>
+	<Block
+		fontFamily='Roboto, sans-serif'>
 		{ children }
 	</Block>;
 
@@ -67,8 +76,10 @@ class App extends React.Component {
 				<Fonts>
 					<Center width='100vw' height='100vh'>
 						<Center>
+							<NavBar/>
 							{this.props.children}
 							<Login lock={this.lock} addUser={actions.users}/>
+							<CreateProfile />
 						</Center>
 					</Center>
 				</Fonts>
