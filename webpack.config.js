@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var devFlagPlugin = new webpack.DefinePlugin({
-  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
+ 	__DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
 });
 
 module.exports = {
@@ -14,7 +14,7 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'dist/js'),
-    publicPath: '/',
+    publicPath: '/static/',
     filename: 'bundle.js',
     hot: true
   },

@@ -3,17 +3,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { bindActionCreators } from 'redux';
 import { Provider } from 'react-redux';
-import { Router, Route } from 'react-router';
-
+import { Router, Route, Link, browserHistory } from 'react-router';
 import configureStore from './store/configure-store';
 import { renderDevTools } from './utils/dev-tools';
-import * as routeActions from './actions/route-actions';
 
 import App from './components/App';
+import Login from './components/Login';
+import NoMatch from './components/NoMatch';
 
 const store = configureStore();
 
-const { initializeIndex }  = bindActionCreators(routeActions, store.dispatch);
+const { initializeIndex } = bindActionCreators(store.dispatch);
 
 let wrapperGenerator = (Component) => {
 	return (props) => {
@@ -29,13 +29,16 @@ let wrapperGenerator = (Component) => {
 };
 
 var Routes = (
-	<Router>
-		<Route path="/" component={wrapperGenerator(App)} onEnter={initializeIndex} />
+	<Router history={browserHistory}>
+		<Route path="/" component={wrapperGenerator(App)}>
+			<Route path="login" component={Login}/>
+			<Route path="*" component={NoMatch}/>
+		</Route>
 	</Router>
 );
 
-store.dispatch(initializeIndex());
+// store.dispatch(initializeIndex());
 
 var Wrapper = wrapperGenerator(App);
 
-ReactDOM.render(<Wrapper />, document.getElementById('main'));
+ReactDOM.render(Routes, document.getElementById('app'));

@@ -6,21 +6,22 @@
 			"React": true
 		},
 		"ecmaFeatures": {
-			"modules": true,
 			"jsx": true,
-			"spread": true
+			"spread": true,
+			"modules": true
 		},
-		"plugins": ["react", "babel"],
-		"extends": ["eslint:recommended", "plugin:react/recommended", "airbnb"]
+		"plugins": ["react", "babel"]
 	},
 	"parser": "babel-eslint",
 	"rules": {
 		"strict": 0,
 		"semi": 2
 	},
-	"env": {
-		"es6": true,
-		"node": true,
-		"browser": true
+	"eslintConfig": {
+		"env": {
+			"es6": true,
+			"node": true,
+			"browser": true
+		}
 	}
 }
