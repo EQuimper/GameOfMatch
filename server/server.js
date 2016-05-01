@@ -5,20 +5,21 @@ let http = require('http').Server(app);
 
 
 const API_KEY = process.env.API_KEY;
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 const ROOT_URL = 'https://na.api.pvp.net/api/lol/na';
 const GLOVAL_URL = 'https://global.api.pvp.net/api/lol/static-data/na';
 const IMG_URL = 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img';
 
 const MY_ID = '23839568';
 let lock = new Auth0Lock('iyRp4eH24dMPLsueQ6yqqbMW0uBW5qHf', 'equimper.auth0.com');
+export default lock;
 
 const app = express();
 
 app.use('/assets', express.static('dist'));
 
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, './public/index.html'));
+  res.sendFile(path.join(__dirname, './index.html'));
 });
 
 // Get Summoner Id and Profile Icon
