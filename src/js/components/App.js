@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Block } from 'jsxstyle';
+import { Block, Flex } from 'jsxstyle';
 import Radium from 'radium';
 import { bindActionCreators } from 'redux';
 import Login from './Login';
@@ -11,6 +11,15 @@ const Fonts = ({ children }) =>
 	<Block fontFamily='Roboto, sans-serif'>
 		{ children }
 	</Block>;
+
+const Center = ({ children, ...rest }) =>
+	<Flex
+		alignItems='center'
+		justifyContent='center'
+		flexWrap='wrap'
+		{ ...rest }>
+		{ children }
+	</Flex>;
 
 class App extends React.Component {
 
@@ -45,15 +54,23 @@ class App extends React.Component {
 		if (this.state.idToken) {
 			return (
 				<Fonts>
-					{this.props.children}
-					<LoggedIn lock={this.lock} idToken={this.state.idToken} />
+					<Center width='100vw' height='100vh'>
+						<Center>
+							{this.props.children}
+							<LoggedIn lock={this.lock} idToken={this.state.idToken} />
+						</Center>
+					</Center>
 				</Fonts>
 			);
 		} else {
 			return (
 				<Fonts>
-					{this.props.children}
-					<Login lock={this.lock} addUser={actions.users}/>
+					<Center width='100vw' height='100vh'>
+						<Center>
+							{this.props.children}
+							<Login lock={this.lock} addUser={actions.users}/>
+						</Center>
+					</Center>
 				</Fonts>
 			);
 		}
