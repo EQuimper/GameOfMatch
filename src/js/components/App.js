@@ -5,7 +5,7 @@ import Radium from 'radium';
 import { bindActionCreators } from 'redux';
 import Login from './Login';
 import LoggedIn from './LoggedIn';
-import * as UserAction from '../actions/user-actions';
+import * as UserAction from '../actions/UserActions';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Colors from 'material-ui/lib/styles/colors';
 
