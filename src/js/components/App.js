@@ -9,6 +9,8 @@ import * as UserAction from '../actions/UserActions';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Colors from 'material-ui/lib/styles/colors';
 
+console.log(UserAction);
+
 import NavBar from './NavBar';
 import CreateProfile from './CreateProfile';
 

@@ -1,2 +1,3 @@
 export const ACCEPT_PLAYER = 'ACCEPT_PLAYER';
 export const DECLINE_PLAYER = 'DECLINE_PLAYER';
+export const RECEIVE_PLAYER = 'RECEIVE_PLAYER';
