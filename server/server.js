@@ -2,6 +2,7 @@
 let express = require('express');
 let request = require('request');
 let http = require('http').Server(app);
+let jwt = require('express-jwt');
 
 
 const API_KEY = process.env.API_KEY;
