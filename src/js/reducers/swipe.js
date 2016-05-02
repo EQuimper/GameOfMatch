@@ -16,7 +16,7 @@ export default function SwipesListReducer( state = [], action ) {
 		case RECEIVE_PLAYER:
 			return [
 				...state,
-        		...action.players.items.map(( player ) => SwipesItemReducer( player, action ))
+				...action.players.items.map(( player ) => SwipesItemReducer( player, action ))
 			];
 		case DECLINE_PLAYER:
 			const index = state.filter(( player ) =>
