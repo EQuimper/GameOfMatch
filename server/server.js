@@ -1,7 +1,9 @@
 'use strict';
 let express = require('express');
+let orm = require('orm');
 let request = require('request');
 let http = require('http').Server(app);
+let createModels = require('./models');
 
 
 const API_KEY = process.env.API_KEY;
@@ -16,11 +18,14 @@ export default lock;
 
 const app = express();
 
-app.use('/assets', express.static('dist'));
+app.use(orm.express("postgres://robert@localhost/gameofmatch", {
+	define: function (db, models, next) {
+		createModels(db, models);
+		next();
+	}
+}));
 
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, './index.html'));
-});
+app.use('/assets', express.static('dist'));
 
 // Get Summoner Id and Profile Icon
 app.get('/summoner/search', function(req, res) {
@@ -62,6 +67,10 @@ app.get('/summoner/profile-icon/', (req, res) => {
 app.get('/summoner/champion-img/', (req, res) => {
 	request(`${IMG_URL}/champion/${capitalizeFirstLetter(req.query.q)}.png`)
 	.pipe(res);
+});
+
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, './index.html'));
 });
 
 

@@ -3,12 +3,12 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var devFlagPlugin = new webpack.DefinePlugin({
- 	__DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
+  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
 });
 
 module.exports = {
   //devtool: 'cheap-module-eval-source-map',
-	devtool: 'inline-sourcemap',
+  devtool: 'inline-sourcemap',
   entry: [
     './src/js/index.js'
   ],
