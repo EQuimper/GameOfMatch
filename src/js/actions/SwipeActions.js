@@ -1,6 +1,8 @@
 import * as types from '../constants/ActionSwipes';
 
-export function acceptPlayer(player){
+import axios from 'axios';
+
+export function acceptPlayer(player) {
 	return {
 		type: types.ACCEPT_PLAYER,
 		player
@@ -20,3 +22,7 @@ export function receivePlayer(json) {
 		player: json.data
 	};
 }
+
+function saveSwipe(player, isAccept) {
+	axios.post();
+};

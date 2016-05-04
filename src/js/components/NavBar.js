@@ -7,35 +7,35 @@ import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import LeftNav from 'material-ui/lib/left-nav';
 import RaisedButton from 'material-ui/lib/raised-button';
-import LeftMenu from './LeftMenu';
 
 class NavBar extends Component {
+
 	constructor(props) {
 		super(props);
 		this.state = {open: false};
 	}
+
 	handleToggle = () => this.setState({open: !this.state.open});
+
+	handleClose = () => this.setState({open: false});
+
 	render() {
 		return (
 			<div>
 				<AppBar
 					title="GameOfMatch"
+					onTouchTap={this.handleToggle}
 					iconClassNameRight="muidocs-icon-navigation-expand-more"
-					iconElementRight={
-						<IconMenu
-							iconButtonElement={
-								<IconButton onTouchTap={this.handleToggle}>
-									<MoreVertIcon/>
-								</IconButton>
-							}
-							targetOrigin={{horizontal: 'right', vertical: 'top'}}
-							anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-						>
-							<MenuItem primaryText="Help" />
-							<MenuItem primaryText="Sign out" />
-						</IconMenu>
-					}
-				/>
+					/>
+				<LeftNav
+					docked={false}
+					width={200}
+					open={this.state.open}
+					onRequestChange={open => this.setState({open})}
+					>
+					<MenuItem onTouchTap={this.handleClose}>My Connection</MenuItem>
+					<MenuItem onTouchTap={this.handleClose}>My Profile</MenuItem>
+				</LeftNav>
 			</div>
 		);
 	}

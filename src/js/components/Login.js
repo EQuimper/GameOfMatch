@@ -11,7 +11,12 @@ class Login extends React.Component {
 		return (
 			<div>
 				<h1>Login Page</h1>
-				<RaisedButton label="Enter" onClick={this.showLock.bind(this)} id="btn-login" class="btn-login" type="submit"/>
+				<RaisedButton
+					label="Enter"
+					onClick={this.showLock.bind(this)}
+					id="btn-login"
+					class="btn-login"
+					type="submit"/>
 			</div>
 		);
 	}
