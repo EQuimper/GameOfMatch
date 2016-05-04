@@ -9,6 +9,7 @@ import { renderDevTools } from './utils/dev-tools';
 import App from './components/App';
 import NoMatch from './components/NoMatch';
 import CreateProfile from './components/CreateProfile';
+import Connections from './components/Connections';
 
 // const { initializeIndex } = bindActionCreators(store.dispatch);
 
@@ -43,6 +44,7 @@ render (
 		<Router history={ browserHistory }>
 			<Route path="/" component={ App }>
 				<Route path="/create-profile" component={ CreateProfile } />
+				<Route path="/my-connections" component={ Connections }/>
 			</Route>
 			<Route path="*" component={ NoMatch }/>
 		</Router>
