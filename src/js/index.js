@@ -7,6 +7,8 @@ import configureStore from './store/configure-store';
 import { renderDevTools } from './utils/dev-tools';
 
 import App from './components/App';
+import Home from './components/Home';
+import Login from './components/Login';
 import NoMatch from './components/NoMatch';
 import CreateProfile from './components/CreateProfile';
 import Connections from './components/Connections';
@@ -43,6 +45,8 @@ render (
 	<Provider store={ configureStore() }>
 		<Router history={ browserHistory }>
 			<Route path="/" component={ App }>
+				<IndexRoute component={ Home } />
+				<Route path="/login" component={ Login } />
 				<Route path="/create-profile" component={ CreateProfile } />
 				<Route path="/my-connections" component={ Connections }/>
 			</Route>
