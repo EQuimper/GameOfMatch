@@ -14,17 +14,13 @@ const ROOT_URL = 'https://na.api.pvp.net/api/lol/na';
 const GLOBAL_URL = 'https://global.api.pvp.net/api/lol/static-data/na';
 const IMG_URL = 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img';
 
-app.use(orm.express("postgres://robert@localhost/gameofmatch", {
+app.use(orm.express("postgres://emanuelquimper@localhost/gameofmatch", {
 	define: function (db, models, next) {
 		createModels(db, models);
 		next();
 	}
 }));
 
-// var jwtCheck = jwt({
-//
-// });
-//
 var jwtCheck = jwt({
 	secret: new Buffer('TTXq4fuE6BpXpklDshv0np9qiE4ktYR3feE4t3pumcKAyllx17RwUnYLFrC4GqXo'),
 	audience: 'ZIaHVUuJe9ChLPxgZv4COCzejMC2Ockp'

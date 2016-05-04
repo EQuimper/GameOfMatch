@@ -34,7 +34,7 @@ class NavBar extends Component {
 					onRequestChange={open => this.setState({open})}
 					>
 					<MenuItem onTouchTap={this.handleClose}>My Connection</MenuItem>
-					<MenuItem onTouchTap={this.handleClose}>My Profile</MenuItem>
+					<MenuItem href="/create-profile" onTouchTap={this.handleClose}>My Profile</MenuItem>
 				</LeftNav>
 			</div>
 		);
