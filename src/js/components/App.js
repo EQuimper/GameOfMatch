@@ -40,10 +40,10 @@ class App extends React.Component {
 		this.lock = new Auth0Lock('iyRp4eH24dMPLsueQ6yqqbMW0uBW5qHf', 'equimper.auth0.com');
 
 		this.setState({idToken: this.getIdToken()});
-  	}
+	}
 	createLock() {
-    	this.lock = new Auth0Lock(this.props.clientId, this.props.domain);
-  	}
+		this.lock = new Auth0Lock(this.props.clientId, this.props.domain);
+	}
 	getIdToken() {
 		// First, check if there is already a JWT in local storage
 		var idToken = localStorage.getItem('id_token');
@@ -60,7 +60,7 @@ class App extends React.Component {
 				console.log("Error signing in", authHash);
 			}
 		}
-    return idToken;
+	return idToken;
 	}
 	render() {
 		const { users, actions } = this.props;
@@ -83,7 +83,6 @@ class App extends React.Component {
 							<NavBar/>
 							{this.props.children}
 							<Login lock={this.lock} addUser={actions.users}/>
-							<CreateProfile />
 						</Center>
 					</Center>
 				</Fonts>
@@ -100,9 +99,9 @@ function mapStateToProps(state) {
 // console.log('mapStateToProps', mapStateToProps());
 
 function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(UserAction, dispatch)
-  };
+	return {
+		actions: bindActionCreators(UserAction, dispatch)
+	};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Radium(App));

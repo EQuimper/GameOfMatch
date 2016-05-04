@@ -7,8 +7,8 @@ import configureStore from './store/configure-store';
 import { renderDevTools } from './utils/dev-tools';
 
 import App from './components/App';
-import Login from './components/Login';
 import NoMatch from './components/NoMatch';
+import CreateProfile from './components/CreateProfile';
 
 // const { initializeIndex } = bindActionCreators(store.dispatch);
 
@@ -42,7 +42,7 @@ render (
 	<Provider store={ configureStore() }>
 		<Router history={ browserHistory }>
 			<Route path="/" component={ App }>
-				
+				<Route path="/create-profile" component={ CreateProfile } />
 			</Route>
 			<Route path="*" component={ NoMatch }/>
 		</Router>
