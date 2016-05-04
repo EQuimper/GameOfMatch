@@ -1,27 +1,25 @@
 'use strict';
 let express = require('express');
 let request = require('request');
+let path = require('path');
+let jwt = require('express-jwt');
 const app = express();
 let http = require('http').Server(app);
-let jwt = require('express-jwt');
-
 
 const API_KEY = process.env.API_KEY;
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 const ROOT_URL = 'https://na.api.pvp.net/api/lol/na';
-const GLOVAL_URL = 'https://global.api.pvp.net/api/lol/static-data/na';
+const GLOBAL_URL = 'https://global.api.pvp.net/api/lol/static-data/na';
 const IMG_URL = 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img';
 
-let lock = new Auth0Lock('iyRp4eH24dMPLsueQ6yqqbMW0uBW5qHf', 'equimper.auth0.com');
-export default lock;
+// var jwtCheck = jwt({
+//
+// });
+//
+// let lock = new Auth0Lock('iyRp4eH24dMPLsueQ6yqqbMW0uBW5qHf', 'equimper.auth0.com');
+// export default lock;
 
-
-
-app.use('/assets', express.static('dist'));
-
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, './public/index.html'));
-});
+app.use('/assets', express.static('../dist'));
 
 // Get Summoner Id and Profile Icon
 app.get('/summoner/search/', function(req, res) {
@@ -49,7 +47,7 @@ app.get('/summoner/all-game/', (req, res) => {
 
 // Global get Champion With their tag
 app.get('/global/champion/', (req, res) => {
-	request(`${GLOVAL_URL}/v1.2/champion?champData=tags&api_key=${API_KEY}`)
+	request(`${GLOBAL_URL}/v1.2/champion?champData=tags&api_key=${API_KEY}`)
 	.pipe(res);
 });
 
@@ -63,6 +61,10 @@ app.get('/summoner/profile-icon/', (req, res) => {
 app.get('/summoner/champion-img/', (req, res) => {
 	request(`${IMG_URL}/champion/${capitalizeFirstLetter(req.query.q)}.png`)
 	.pipe(res);
+});
+
+app.get('*', function(req, res) {
+	res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 

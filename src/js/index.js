@@ -42,8 +42,9 @@ render (
 	<Provider store={ configureStore() }>
 		<Router history={ browserHistory }>
 			<Route path="/" component={ App }>
-				<Route path="*" component={ NoMatch }/>
+				
 			</Route>
+			<Route path="*" component={ NoMatch }/>
 		</Router>
 	</Provider>,
 	document.getElementById('app')
