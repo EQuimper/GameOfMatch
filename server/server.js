@@ -12,10 +12,11 @@ const ROOT_URL = 'https://na.api.pvp.net/api/lol/na';
 const GLOBAL_URL = 'https://global.api.pvp.net/api/lol/static-data/na';
 const IMG_URL = 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img';
 
-// var jwtCheck = jwt({
-//
-// });
-//
+var jwtCheck = jwt({
+	secret: new Buffer('TTXq4fuE6BpXpklDshv0np9qiE4ktYR3feE4t3pumcKAyllx17RwUnYLFrC4GqXo'),
+	audience: 'ZIaHVUuJe9ChLPxgZv4COCzejMC2Ockp'
+});
+
 // let lock = new Auth0Lock('iyRp4eH24dMPLsueQ6yqqbMW0uBW5qHf', 'equimper.auth0.com');
 // export default lock;
 
