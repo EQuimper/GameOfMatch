@@ -1,15 +1,16 @@
-var createModels(db, models) {
-	models.user = db.define("user", {
+function createModels(db, models) {
+	models.users = db.define("users", {
 		league_id: String,
 		summoner_name: String,
 		profile_image: String,
 		division: String,
 		primary_position: String,
 		secondary_position: String,
-		auth_id: String
+		auth_id: String,
+		id: String
 	});
 
-	models.champion = db.define("champion", {
+	models.champions = db.define("champions", {
 		id: String,
 		name: String,
 		image: String

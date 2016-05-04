@@ -14,12 +14,6 @@ const ROOT_URL = 'https://na.api.pvp.net/api/lol/na';
 const GLOBAL_URL = 'https://global.api.pvp.net/api/lol/static-data/na';
 const IMG_URL = 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img';
 
-const MY_ID = '23839568';
-let lock = new Auth0Lock('iyRp4eH24dMPLsueQ6yqqbMW0uBW5qHf', 'equimper.auth0.com');
-export default lock;
-
-const app = express();
-
 app.use(orm.express("postgres://robert@localhost/gameofmatch", {
 	define: function (db, models, next) {
 		createModels(db, models);
@@ -30,6 +24,9 @@ app.use(orm.express("postgres://robert@localhost/gameofmatch", {
 // var jwtCheck = jwt({
 //
 // });
+//
+// let lock = new Auth0Lock('iyRp4eH24dMPLsueQ6yqqbMW0uBW5qHf', 'equimper.auth0.com');
+// export default lock;
 
 app.use('/assets', express.static('../dist'));
 
@@ -73,6 +70,31 @@ app.get('/summoner/profile-icon/', (req, res) => {
 app.get('/summoner/champion-img/', (req, res) => {
 	request(`${IMG_URL}/champion/${capitalizeFirstLetter(req.query.q)}.png`)
 	.pipe(res);
+});
+
+app.get('/user/:summoner_name', function(req, res) {
+	req.models.users.one({summoner_name: req.params.summoner_name}, function (err, user) {
+		if (!user) {
+			res.send("Sorry, we couldn't find that user");
+			return console.log(err);
+		} else {
+			res.send('all good');
+    		return console.log("user id:", user.league_id);
+    	}
+	});
+});
+
+app.get('/champion/:name', function(req, res) {
+	req.models.champions.one({name: req.params.name}, function (err, champion) {
+		if (!champion) {
+			res.send("Sorry, we couldn't find that champion");
+			return console.log(err);
+		} else {
+			res.send('all good');
+			console.log("champion", champion.id, champion.name, champion.image);
+    		return console.log("champion id:", champion.id);
+    	}
+	});
 });
 
 app.get('*', function(req, res) {
