@@ -2,14 +2,16 @@
 let express = require('express');
 let orm = require('orm');
 let request = require('request');
+let path = require('path');
+let jwt = require('express-jwt');
+const app = express();
 let http = require('http').Server(app);
 let createModels = require('./models');
 
-
 const API_KEY = process.env.API_KEY;
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 const ROOT_URL = 'https://na.api.pvp.net/api/lol/na';
-const GLOVAL_URL = 'https://global.api.pvp.net/api/lol/static-data/na';
+const GLOBAL_URL = 'https://global.api.pvp.net/api/lol/static-data/na';
 const IMG_URL = 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img';
 
 const MY_ID = '23839568';
@@ -25,10 +27,14 @@ app.use(orm.express("postgres://robert@localhost/gameofmatch", {
 	}
 }));
 
-app.use('/assets', express.static('dist'));
+// var jwtCheck = jwt({
+//
+// });
+
+app.use('/assets', express.static('../dist'));
 
 // Get Summoner Id and Profile Icon
-app.get('/summoner/search', function(req, res) {
+app.get('/summoner/search/', function(req, res) {
 	request(`${ROOT_URL}/v1.4/summoner/by-name/${req.query.q}?api_key=${API_KEY}`)
 	.pipe(res);
 });
@@ -53,7 +59,7 @@ app.get('/summoner/all-game/', (req, res) => {
 
 // Global get Champion With their tag
 app.get('/global/champion/', (req, res) => {
-	request(`${GLOVAL_URL}/v1.2/champion?champData=tags&api_key=${API_KEY}`)
+	request(`${GLOBAL_URL}/v1.2/champion?champData=tags&api_key=${API_KEY}`)
 	.pipe(res);
 });
 
@@ -70,7 +76,7 @@ app.get('/summoner/champion-img/', (req, res) => {
 });
 
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, './index.html'));
+	res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 

@@ -2,7 +2,7 @@ import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import {devTools, persistState} from 'redux-devtools';
-import * as reducers from '../reducers/index';
+import rootReducer from '../reducers/index';
 
 let createStoreWithMiddleware;
 
@@ -16,7 +16,6 @@ if (__DEV__) {
 }else {
  	createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
 }
-const rootReducer = combineReducers(reducers);
 
 export default function configureStore(initialState) {
 	return createStoreWithMiddleware(rootReducer, initialState);
