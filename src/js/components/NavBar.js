@@ -26,6 +26,20 @@ class NavBar extends Component {
 					title="GameOfMatch"
 					onTouchTap={this.handleToggle}
 					iconClassNameRight="muidocs-icon-navigation-expand-more"
+					iconElementRight={
+						<IconMenu
+							iconButtonElement={
+								<IconButton><MoreVertIcon /></IconButton>
+							}
+							targetOrigin={{horizontal: 'right', vertical: 'top'}}
+							anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+							>
+							<MenuItem href="/login" primaryText="Login" />
+							<MenuItem primaryText="Refresh" />
+							<MenuItem primaryText="Help" />
+							<MenuItem primaryText="Sign out" />
+						</IconMenu>
+					}
 					/>
 				<LeftNav
 					docked={false}
