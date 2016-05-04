@@ -25,6 +25,11 @@ app.use(orm.express("postgres://robert@localhost/gameofmatch", {
 //
 // });
 //
+var jwtCheck = jwt({
+	secret: new Buffer('TTXq4fuE6BpXpklDshv0np9qiE4ktYR3feE4t3pumcKAyllx17RwUnYLFrC4GqXo'),
+	audience: 'ZIaHVUuJe9ChLPxgZv4COCzejMC2Ockp'
+});
+
 // let lock = new Auth0Lock('iyRp4eH24dMPLsueQ6yqqbMW0uBW5qHf', 'equimper.auth0.com');
 // export default lock;
 
