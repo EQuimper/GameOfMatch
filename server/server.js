@@ -73,8 +73,8 @@ app.get('/summoner/champion-img/', (req, res) => {
 	.pipe(res);
 });
 
-app.get('/user/:summoner_name', function(req, res) {
-	req.models.users.one({summoner_name: req.params.summoner_name}, function (err, user) {
+app.get('/user/:positions', function(req, res) {
+	req.models.users.one({positions: req.params.positions}, function (err, user) {
 		if (!user) {
 			res.send("Sorry, we couldn't find that user");
 			return console.log(err);
