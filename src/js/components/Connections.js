@@ -55,7 +55,7 @@ class Connections extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>My Connection</h1>
+				<h1 style={styles.title}>My Connection</h1>
 				<div style={styles.root}>
 					<GridList cols={5} cellHeight={200} style={styles.gridList}>
 						{tilesData.map(tile => (
@@ -76,6 +76,9 @@ class Connections extends React.Component {
 }
 
 let styles = {
+	title: {
+		textAlign: 'center'
+	},
 	paper: {
 		width: '300px'
 	},
