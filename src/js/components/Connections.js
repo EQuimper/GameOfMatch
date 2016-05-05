@@ -57,7 +57,7 @@ class Connections extends React.Component {
 			<div>
 				<h1>My Connection</h1>
 				<div style={styles.root}>
-					<GridList cellHeight={200} style={styles.gridList}>
+					<GridList cols={5} cellHeight={200} style={styles.gridList}>
 						{tilesData.map(tile => (
 							<GridTile
 								key={tile.img}
@@ -88,7 +88,7 @@ let styles = {
 		justifyContent: 'space-around',
 	},
 	gridList: {
-		width: 500,
+		width: 1000,
 		height: 400,
 		overflowY: 'auto',
 		marginBottom: 24,
